@@ -3,13 +3,12 @@
   "description": "🗺 A CLI made to help you to find your wanted location. (At Brasil)",
   "version": "1.0.0",
   "repository": "https://github.com/kauefraga/viacep-cli.git",
-  "author": "kauefraga <kauefragarodrigues456@gmail.com>",
+  "author": "Kauê Fraga Rodrigues <kauefragarodrigues456@gmail.com>",
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node .",
     "dev": "tsnd --respawn --transpile-only src/index.ts",
     "lint": "eslint"
   },

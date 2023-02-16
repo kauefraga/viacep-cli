@@ -1,17 +1,13 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable import/extensions */
 import { clear } from 'node:console';
 import { prompt } from 'enquirer';
 
-import getViacepData from './services/getViacepData';
-import Logo from './components/logo';
-import Answer from './components/answer';
+import { getViacepData } from './services/get-viacep-data';
+import { showLogo } from './components/logo';
+import { showData } from './components/answer';
 
-const logo = new Logo('Viacep');
-
-async function init() {
+async function main() {
   clear();
-  logo.showIt();
+  showLogo('Viacep');
 
   const userAnswer = await prompt({
     type: 'input',
@@ -26,15 +22,11 @@ async function init() {
   })
     .then((answer) => JSON.stringify(answer));
 
-  // eslint-disable-next-line no-unused-vars
-  const [key, value] = userAnswer.split(':');
-  const cep = value.replace(/["}]/g, '');
+  const { cep } = JSON.parse(userAnswer);
 
   const data = await getViacepData(cep);
 
-  const answer = new Answer(data);
-
-  answer.showIt();
+  showData(data);
 }
 
-init();
+main();
